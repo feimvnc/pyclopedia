@@ -1,24 +1,23 @@
-# A CV in code, created by human assisted by AI. Thank you for reading.
-# Author: feimvnc@gmail.com
-# To run: 
-# pip install numpy==1.24.2 pydantic==2.0.1 matplotlib==3.7.1
+# A CV as code, created by human idea assisted by AI, thank you for reading.
+# To run, pip install numpy==1.24.2 pydantic==2.0.1 matplotlib==3.7.1
 # python cv.py
 """ 
 Name: Fei Chen
 Phone: 44-(0)-757-661-1811 (London, U.K.)
+github: https://github.com/feimvnc
 linkedin: https://www.linkedin.com/in/fei-chen-1654849/
 
 Ability:
-        Capable Engineer
         Inventor
         Learner
+        Reliable Engineer
         Volunteer
 
 Certifications:
-        Aws: 7
-        Gcp: 7
-        K8S: 3
-        Cissp: 1
+        Amazon Certified: 7
+        Google Certified: 7
+        Kubernetes Certified: 3
+        Cissp Certified: 1
         Terraform: 1
         Others: Oracle, Security+, Java
 
@@ -51,16 +50,16 @@ Projects:
 
 Researches:
         Ai/Ml: 3
-        K8S-Sec: 1
-        Aws-Gcp: 2
-        Model-Safety: 2
-        Model-Rating: 1
-        Zero Trust: 1
+        K8S-Security: 1
+        Aws-Google Cloud: 2
+        Ml Model-Safety: 2
+        Ml Model-Rating: 1
+        Cloud Zero Trust: 1
         Engineering: 1
-        Security: 3
+        Data/Access Security: 3
 
 Awards:
-        Hackathon_Gpt_Cloud, 2023_2, Python, Gpt, Cloud
+        Hackathon_Gpt_Cloud, 2023_2, Python, Gpt, Guidance, Cloud
         Aws_Deepracer, 2020_20, Aws Sagemaker
         Round_Island, 2022_1, Sail Racing
         Innovator, 2019_1, Inventor Award
@@ -70,19 +69,17 @@ Awards:
 
 Volunteer_others:
         Aws Trainer
-        Machine Learing Group Lead
+        Machine Learning Group Lead
         Blockchain Group Lead
         Force For Good
         Hackathon
         Patent Innovation
 
 Eduation:
-        U. N. Texas: Ms Cs, Ms Mgmt
-        Zhejiang U.: Bs Mgmt
+        U. N. Texas: Masters, Computer Science, Management
 """
 
 from enum import Enum
-from os import confstr
 from typing import Dict, Any, List, Optional
 from collections import Counter
 import math, re, yaml
@@ -110,7 +107,7 @@ class CV(BaseModel):                                  # CV class start here
     @print_section_name
     def ability(self) -> List[str]:                   # CV section title
         a = np.array([
-                      "Capable engineer",             # Abilities 
+                      "Reliable engineer",             # Abilities 
                       "Inventor", 
                       "Learner", 
                       "Volunteer"])
@@ -120,12 +117,12 @@ class CV(BaseModel):                                  # CV class start here
     def certifications(self) -> Dict[str, str]:
         a = { 
             # "Certifications": "",
-            "aws": sum(np.ones(7, dtype="int32")),    # 7 (arch,sysop,dev,db,sec,ml,devop_pro)
-            "gcp": sum([1]*7),                        # 7 (arch,sysadm,db,sec,ml,data,wks)
-            "k8s": sum(np.array([1,1,1])),            # 3 (ckad,cka,cks)
-            "cissp": min((1,2,3)),                    # 3 years memberships
+            "amazon certified": sum(np.ones(7, dtype="int32")),   # 7 (arch,sysop,dev,db,sec,ml,devop_pro)
+            "google certified": sum([1]*7),                       # 7 (arch,sysadm,db,sec,ml,data,wks)
+            "kubernetes certified": sum(np.array([1,1,1])),       # 3 (ckad,cka,cks)
+            "cissp certified": min((1,2,3)),                      # 3 years memberships
             "terraform": round((complex(0 - pow(math.pi, (1j*math.e))).real)),    # 1.0, 0 - e^(i*pi) = 1
-            "others": ("oracle, security+, java")     # extras
+            "others": ("oracle, security+, java")                 # extras
             }            
         yield a 
 
@@ -141,13 +138,13 @@ class CV(BaseModel):                                  # CV class start here
     @print_section_name
     def researches(self) -> List[Any]:
         a = {"ai/ml": True+True+True,                 # 3, 2022 ny ai summit, 2023 gpt-cloud, go-ml
-             "k8s-sec": f'{(math.cos(0)):1.0f}',      # 1, 2022 devup conference
-             "aws-gcp": 1+1,                          # 2, cloud federation, hash chunk
-             "model-safety": 2**1,                    # 2, model pen prompting, incident response
-             "model-rating": 1,                       # 1, training data based model rating, from "The textbook is all you need" 
-             "zero trust": 1&1,                       # 1, cloud security model down to api  
+             "k8s-security": f'{(math.cos(0)):1.0f}', # 1, 2022 devup conference
+             "aws-google cloud": 1+1,                 # 2, cloud federation, hash chunk
+             "ml model-safety": 2**1,                 # 2, model pen prompting, incident response
+             "ml model-rating": 1,                    # 1, training data based model rating, from "The textbook is all you need" 
+             "cloud zero trust": 1&1,                 # 1, cloud security model down to api  
              "engineering": 128>>7,                   # 1, automation, agent
-             "security": 3//1}                        # 3, fraud by graph theory, dynamic session termination, api fingerprint
+             "data/access security": 3//1}            # 3, fraud by graph theory, dynamic session termination, api fingerprint
         return {**a}                                  # unpack items
 
     @print_section_name
@@ -188,7 +185,7 @@ class CV(BaseModel):                                  # CV class start here
     @print_section_name
     def awards(self) -> List[str]:
         class R(Enum):
-            HACKATHON_GPT_CLOUD = '2023_2, python, gpt, cloud'    # chat-gpt for cloud 
+            HACKATHON_GPT_CLOUD = '2023_2, python, gpt, guidance, cloud'    # chat-gpt for cloud 
             AWS_DEEPRACER = '2020_20, aws sagemaker'                        # aws deepracer top 20
             ROUND_ISLAND = '2022_1, sail racing'                            # round the island sale top
             INNOVATOR = '2019_1, inventor award'                            # innovator award
@@ -199,19 +196,17 @@ class CV(BaseModel):                                  # CV class start here
 
     @print_section_name
     def eduation(self) -> Dict[Any, Any]:
-        e = { "U. N. Texas": "MS CS, MS MGMT",        # Univ of N. texas, 2 x Masters
-              "Zhejiang U.": "BS MGMT"              # Zhejiang Univ., BS
-            }
+        e = { "U. N. Texas": "Masters, Computer Science, Management"}       # Univ of N. texas, 2 x Masters
         yield e
 
     @print_section_name
     def volunteer_others(self) -> List[str]:
         v = ["AWS trainer",                           # all internal tech communities
-             "Machine learing group lead",            # tech community
-             "blockchain group lead",                 # tech community
-             "force for good",                        # charity volunteer
-             "hackathon",                             # tech community
-             "patent innovation"]                     # helped london tech hub to top 5
+             "Machine Learning group lead",           # tech community
+             "Blockchain group lead",                 # tech community
+             "Force for good",                        # charity volunteer
+             "Hackathon",                             # tech community
+             "Patent innovation"]                     # helped london tech hub to top 5
         return v
 
     def format_str(self, s: str=None, d: Dict[str, str]=None):    # print nicely
@@ -220,28 +215,31 @@ class CV(BaseModel):                                  # CV class start here
         print(" "*7, s.title())
 
     def timelines(self) -> None:
-        dates=['2001', '2003', '2005', '2007',
-            '2009', '2011', '2013', '2015',
-            '2017', '2019', '2021', '2023']
-        names=['pepsico', 'cisco', 'java(3x)', 'oracle(3x)',
-            'enginex', 'jpmorgan', 'enterprise app/data', 'patents, cissp',
-            'gcp(7x))', 'k8s(3x)', 'aws(7x)', 'hackthon gpt cloud(2nd)']
+        dates=['2001', '2003', '2005', '2007', '2011', '2013', 
+               '2015', '2017', '2019', '2021', '2022','2023']
+        names=['pepsico dist. billing/accounting apps', 'cisco optical network mgmt. system', 
+            'java certified(3x)', 'oracle certified(3x)', 'jpmorgan (dallas & london)', 
+            'enterprise app dev/operation/security/deployment/cloud', 
+            'process automation/engineering/operation/robotic agent patents(4)', 
+            'cissp certified (isc2)', 'google cloud certified(7x)', 
+            'kubernetes certified(3x cloud native)', 
+            'amazon web service certified(7x)', 'openai/gpt/vectordb/guidane/cloud']
         levels = np.tile([-4,4,-2,2,-1,1], int(np.ceil(len(dates)/4)))[:len(dates)]
 
         import matplotlib.pyplot as plt
         import matplotlib.dates as mdates 
         from datetime import datetime
         dates = [datetime.strptime(d, "%Y") for d in dates]
-        fig, ax = plt.subplots(figsize=(12,4),layout="constrained")
-        ax.set(title="CV in Code")
+        _, ax = plt.subplots(figsize=(12,4),layout="constrained")
+        ax.set(title="cv graph")
         ax.vlines(dates, 0, levels, color="tab:red")
         ax.plot(dates, np.zeros_like(dates), "-o", 
             color="k", markerfacecolor="w")
 
         for d, l, r in zip(dates, levels, names):
             ax.annotate(r, xy=(d, l),
-                    xytext=(3, np.sign(l)*3), textcoords="offset points",
-                    horizontalalignment="right",
+                    xytext=(10, np.sign(l)*3), textcoords="offset points",
+                    horizontalalignment="center",
                     verticalalignment="bottom" if l > 0 else "top")
         ax.xaxis.set_major_locator(mdates.MonthLocator(interval=24))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
@@ -255,8 +253,9 @@ def main():
     a = {
         "Name": "Fei Chen",
         "Phone": "44-(0)-757-661-1811 (London, U.K.)",
-        "linkedin": "https://www.linkedin.com/in/fei-chen-1654849/"
-    }
+        "github": "https://github.com/feimvnc",
+        "linkedin": "https://www.linkedin.com/in/fei-chen-1654849/" 
+        }
 
     try:
         cv = CV(profile=a)
