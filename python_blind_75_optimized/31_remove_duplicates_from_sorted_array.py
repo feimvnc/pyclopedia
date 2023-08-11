@@ -27,9 +27,31 @@ class Solution:
             if nums[right] != nums[right-1]:
                 nums[left] = nums[right]
                 left += 1     # left only moves when current != prev not same 
-            print(nums[right], left)
+            # print(nums[right], left)
         print(nums)
         return left 
 
-nums = [2,2,3,5,8,8,8,9,10]
+    def removeDuplicates_2(self, nums: List[int])-> int:
+        if len(nums) == 0: return 0 
+        if len(nums) == 1: return 1 
+
+        # nums = [0,0,1,1,1,2,2,3,4]
+        j = 1 
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[j] = nums[i]
+                j += 1 
+
+        # after above, i=9, j=5
+        for delete_index in range(i, j-1, -1):   # delete backwards 
+            del nums[delete_index]
+
+        print(nums)
+
+        return j 
+
+
+nums = [0,0,1,1,1,2,2,3,4]
 print(Solution().removeDuplicates(nums))
+nums = [0,0,1,1,1,2,2,3,4]
+print(Solution().removeDuplicates_2(nums))
