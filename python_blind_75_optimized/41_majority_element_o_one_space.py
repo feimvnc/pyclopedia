@@ -29,11 +29,11 @@ class Solution:
         if not nums: return []    # if input is empty, return []
 
         for n in nums:
-            if cand1 == n:
+            if cand1 == n:    # count first number  
                 count1+=1
-            elif cand2 == n:
+            elif cand2 == n:    # count second number  
                 count2+=1
-            elif count1==0:   # assign first number
+            elif count1==0:   # assign first number, or assign new number when count==0
                 cand1=n 
                 count1+=1
             elif count2==0:   # assign secode number 
