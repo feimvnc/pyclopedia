@@ -43,8 +43,21 @@ class Solution:
             i += 1 
         print(nums)
 
+    # use Hashmap to count, and array multiplication 
+    def sortColorNumbers_3(self, nums: List[int]) -> None:
+        count = {}     # dict to track num and frequency
+        res = []     # for result  
+
+        for num in nums:
+            count[num] = count.get(num, 0) + 1 
+        for i in sorted(set(nums)):
+            res += [i]*count[i]
+        
+        print(res)
+
 
 nums = [2,1,0,2,1,0,1]
 Solution().sortColorNumbers(nums) 
 Solution().sortColorNumbers_2(nums) 
+Solution().sortColorNumbers_3(nums)
 

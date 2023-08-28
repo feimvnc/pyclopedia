@@ -53,12 +53,27 @@ class Solution:
             prevMap[n] = i 
         return [] 
 
+
+    # use two pointers
+    def two_sum_5(self, ns: List[int], target: int) -> List[int]:
+        l, r = 0, len(ns)-1
+        while l<r:
+            total = ns[l]+ns[r]
+            if total == target:
+                return [l+1, r+1]
+            elif total < target:
+                l += 1
+            else:
+                r -= 1
+        return [-1,-1]
+
 nums = [2, 7, 11, 15]
 target = 9
 s = Solution()
 print(s.two_sum(nums, target))
 print(s.two_sum_np(nums, target))
 print(s.two_sum_np_2(nums, target))
+print(s.two_sum_5(nums, target))
 
 
 """ output 
@@ -73,5 +88,5 @@ $ python 01_two_sum.py
 [0 1]
 <class 'numpy.ndarray'>
 (array([0, 1]),)
-
+[1, 2]
 """ 

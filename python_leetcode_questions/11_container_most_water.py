@@ -28,10 +28,26 @@ class Solution:
         # return the max value
         return max(list(map(lambda x: min(x)*(heights.index(x[1])-heights.index(x[0])), h)))
 
+    # use two pointers 
+    def container_most_water_2(self, heights: list[int]) -> int:
+        left = 0 
+        right = len(heights)-1
+        ans = 0 
+        while left < right:
+            area = min(heights[left], heights[right])*(right-left)
+            ans = max(ans, area)
+            if heights[left] < heights[right]:   # left small, move to find next 
+                left += 1     
+            else:
+                right -= 1 
+        return ans 
+
+
 
 heights = [1,8,6,2,5,4,8,3,7]
 s = Solution()
 print(s.container_most_water(heights))
+print(s.container_most_water_2(heights))
 
 
 """ 
