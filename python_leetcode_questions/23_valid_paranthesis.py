@@ -1,7 +1,6 @@
 from distutils import ccompiler
 from syslog import closelog
 
-
 class Solution:
     def isValid(self, s: str)->bool:
         stack = [] 

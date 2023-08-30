@@ -28,6 +28,17 @@ class Solution:
         else:
             return self.searchBSTRecursive(root.left, val)
 
+    def searchBSTRecursive_2(self, root: TreeNode, val: int)-> TreeNode:
+        # base case
+        if not root: return None 
+        if root.val == val: return root 
+
+        # recursion relation 
+        if val > root.val:
+            return self.searchBSTRecursive_2(root.right, val)
+        else:
+            return self.searchBSTRecursive_2(root.left, val)
+
 
 t = TreeNode(5)
 t.left=TreeNode(2)
@@ -44,3 +55,7 @@ print(Solution().searchBST(t, target.val).val)
 
 target=TreeNode(5)
 print(Solution().searchBSTRecursive(t, target.val).val)
+
+target=TreeNode(10)
+print(Solution().searchBSTRecursive_2(t, target.val).val)
+
