@@ -72,3 +72,26 @@ class Solution2:
 
 nums22= [2,3,1,1,4]
 print(Solution2().jump(nums22))
+
+""" 
+Jump game using dynamic programming method.
+"""
+
+class Solution_DP:
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+        f = [False] * n 
+        f[0] = True 
+
+        for j in range(1, n):
+            f[j] = False 
+            for i in range(0, n):
+                if (f[i] and i + nums[i] >= j):
+                    f[j] = True 
+                    break 
+        return f[n-1]
+
+nums3 = [3,2,1,0,4]
+print(Solution_DP().jump(nums3))   # False 
+nums33 = [2,3,1,1,4]
+print(Solution_DP().jump(nums33))   # True 
