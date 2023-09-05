@@ -32,5 +32,30 @@ class Solution:
         return -1     # not found case
 
 
-print(Solution().search([-1,0,3,5,9,12], 9))
-print(Solution().binarySearch([-1,0,3,5,9,12], 9))
+    def binarySearchTemplate(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return 0 
+        
+        l, n = 0, len(nums) - 1
+        while (l + 1 < n):
+            mid = l + (n - l)//2
+            if nums[mid] == target:
+                return mid 
+            elif nums[mid] < target:
+                l = mid 
+            else: 
+                r = mid 
+
+        if nums[l] == target:
+            return l 
+        if nums[r] == target:
+            return r 
+
+        return -1 
+
+
+
+
+print(Solution().search([-1,0,3,5,9,12], 9))  # -> 4 
+print(Solution().binarySearch([-1,0,3,5,9,12], 9)) # -> 4 
+print(Solution().binarySearchTemplate([-1,0,3,5,9,12], 9))  # -> 4 
