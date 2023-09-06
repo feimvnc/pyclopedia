@@ -91,7 +91,36 @@ class Solution_DP:
                     break 
         return f[n-1]
 
+
+    def canJump2(self, nums: List[int]) ->bool:
+        max_reach = 0   # how far can go 
+        for i, num in enumerate(nums):
+            if i > max_reach: return False    # if index beyond max_reach
+            max_reach = max(max_reach, i + num)   # update s
+        return True 
+
+
+class Solution_DFS:
+    def canJump(self, nums: List[int]) -> bool:
+
+        from functools import lru_cache 
+        @lru_cache(None)
+        def dfs(i):
+            # if yes 
+            if i + nums[i] >= len(nums) - 1: return True 
+            # if no
+            if i != len(nums) - 1 and nums[i] == 0: return False 
+            # otherewise continue 
+            return any(dfs(i + d) for d in range(1, nums[i] + 1))
+        return dfs(0)
+
+
+
 nums3 = [3,2,1,0,4]
 print(Solution_DP().jump(nums3))   # False 
 nums33 = [2,3,1,1,4]
 print(Solution_DP().jump(nums33))   # True 
+print(Solution_DP().canJump2(nums3))   
+
+print(Solution_DFS().canJump(nums3))    # False
+print(Solution_DFS().canJump(nums33))   # True 
