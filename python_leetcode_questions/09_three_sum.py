@@ -17,7 +17,6 @@ A solution set is:
 """
 from typing import List 
 from itertools import combinations
-import numpy as np  
 
 class Solution:
 
@@ -35,11 +34,45 @@ class Solution:
         # filter list with condition of sum() == 0
         return (list(filter(self.zero_sum_list, temp)))
 
+    def three_sum_two_ptrs(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        # print(nums)   # -> [-1, -1, 0, 1, 2, 4]
+        if not nums: 
+            return []
+        N = len(nums)
+        res = [] 
+        for i in range(N):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue 
+            head = i + 1
+            end = N - 1  
+            while head < end: 
+                h, m, e = nums[head], nums[i], nums[end]
+                if h + m + e == 0:
+                    res.append([m, h, e])
+                    head += 1
+                    while head < end and nums[head] == nums[head-1]:
+                        head += 1
+                    end -= 1
+                    while head < end and nums[end] == nums[end+1]:
+                        end -= 1
+                elif h + m + e < 0:
+                    head += 1 
+                    while head < end and nums[head] == nums[head - 1]:
+                        head += 1 
+                else: #  h + m + e > 0
+                    end -= 1 
+                    while head < end and nums[end] == nums[end + 1]:
+                        end -= 1  
+
+        return res 
+
 
 nums = [-1, 0, 1, 2, -1, 4]
 s = Solution()
-print(s.three_sum(nums))
+print(s.three_sum(nums))   # -> [(-1, 0, 1), (-1, -1, 2)]
 
+print(s.three_sum_two_ptrs(nums))   # -> [[-1, -1, 2], [-1, 0, 1]]
 
 """ 
 # without duplicate removal, 1st and 3rd item are same
@@ -50,5 +83,4 @@ $ python 09_three_sum.py
 # after duplicate removed 
 $ python 09_three_sum.py 
 [(-1, 0, 1), (-1, -1, 2)]
-
 """
