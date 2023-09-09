@@ -28,8 +28,37 @@ class Solution:
             final_count += 1 
         return final_count
 
+    def longestPalindrom_2(self, s: str) -> bool:
+        N = len(s)
+
+        # check if s self is palindrom
+        # aba
+        for i in range(N):
+            if s == s[::-1]:
+                return True     
+            # remove left char
+            elif s[i:] == s[i:][::-1]:   
+                return True        
+            # remove right char 
+            elif s[:N-i] == s[:N-i][::-1]:
+                return True
+            # remove chars at both ends   
+            elif s[i+1:N-i] == s[i+1:N-i][::-1]:
+                return True 
+            # return False if not found 
+            return False
+        return False  
+
+
 s, s1, s2, s3 = "abccccdd", 'a',  'bb', 'ccc'
 print(Solution().longestPalindrome(s))        
 print(Solution().longestPalindrome(s1))        
 print(Solution().longestPalindrome(s2))   
-print(Solution().longestPalindrome(s3))        
+print(Solution().longestPalindrome(s3))     
+
+print(Solution().longestPalindrom_2('abccba'))   # -> True 
+print(Solution().longestPalindrom_2('abc'))   # -> False 
+
+print(Solution().longestPalindrom_two_pts('a'))   # -> False 
+
+
